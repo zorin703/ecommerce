@@ -93,6 +93,12 @@ export const SignUp = () => {
                 </div>
 
             </form>
+            <div>
+                <p>
+                    By signing in to your account you agree with our
+                    Privacy Policy and Terms of Use.
+                </p>
+            </div>
         </div>
     )
 }
