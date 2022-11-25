@@ -1,4 +1,4 @@
-.wrapperLogin{
+.wrapperLogin {
     padding: 30px;
     margin: auto auto;
     width: 410px;
@@ -12,7 +12,7 @@
     border-radius: 10px;
 }
 
-.inputStyles{
+.inputStyles {
     /*box-sizing: border-box;*/
 
     /*position: absolute;*/
@@ -29,12 +29,13 @@
 
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    /*padding-left: 30px;*/
+    font-size: 18px;
 }
 
-.inputStyles::placeholder{
+.inputStyles::placeholder {
     /*width: 100px;*/
     height: 25px;
-    padding-left: 30px;
 
     /* Caption / 2 / Regular */
 
@@ -52,11 +53,40 @@
     /* Grey / Dark / 3 */
 
     color: rgba(0, 0, 0, 0.4);
-/*color: black;*/
+    /*color: black;*/
 
     /* Inside auto layout */
 
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.buttonLogin {
+    /*position: absolute;*/
+    /*left: 625px;*/
+    /*right: 625px;*/
+    /*top: 507px;*/
+    /*bottom: 751px;*/
+
+    width: 350px;
+    height: 50px;
+    left: 625px;
+    top: 375px;
+    margin-bottom: 16px;
+    padding: 0;
+    /* Accent 1 / 4 */
+
+    background: #2D74FF;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    /*line-height: 20px;*/
+
+    /*padding-left: 50px;*/
+
 }

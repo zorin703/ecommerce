@@ -1,4 +1,6 @@
 import {useForm} from "react-hook-form";
+import style from "./Loginization.module.css";
+import {Link} from "react-router-dom";
 
 export const RestorePassword = () => {
     const {
@@ -10,13 +12,21 @@ export const RestorePassword = () => {
         reset,
     } = useForm({
         mode: 'all',
-
     });
 
     const onSubmit = (data: any) => console.log(data);
     return (
         <div>
-            <h1>Restore password</h1>
+            <div>
+                <h1>Restore password</h1>
+            </div>
+            <div>
+                <Link to='../signin'>
+                    <p>
+                        Sign in
+                    </p>
+                </Link>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input {...register('email',
@@ -30,13 +40,13 @@ export const RestorePassword = () => {
                            onFocus={() => {
                                clearErrors()
                            }}
+                           className={style.inputStyles}
                            placeholder={"Your email"}/>
                 </div>
 
                 <div>
-                    <button>Send</button>
+                    <button className={style.buttonLogin}>Send</button>
                 </div>
-
             </form>
         </div>
     )
