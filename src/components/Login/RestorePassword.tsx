@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
 
-export const SignIn = () => {
+export const RestorePassword = () => {
     const {
         register,
         handleSubmit,
@@ -16,7 +16,7 @@ export const SignIn = () => {
     const onSubmit = (data: any) => console.log(data);
     return (
         <div>
-            <h1>Sign In</h1>
+            <h1>Restore password</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input {...register('email',
@@ -30,23 +30,11 @@ export const SignIn = () => {
                            onFocus={() => {
                                clearErrors()
                            }}
-                           placeholder={"Email"}/>
+                           placeholder={"Your email"}/>
                 </div>
-                {errors.email && <div style={{color: 'red'}}>email is incorrect</div>}
-                <div>
-                    <input {...register('password',
-                        {
-                            required: "required filed"
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           placeholder={"Password"}/>
-                </div>
-                {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
 
                 <div>
-                    <button>Login</button>
+                    <button>Send</button>
                 </div>
 
             </form>

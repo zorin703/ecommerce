@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form";
+import style from "./Loginization.module.css"
 
-export const SignIn = () => {
+export const SignUp = () => {
     const {
         register,
         handleSubmit,
@@ -16,8 +17,21 @@ export const SignIn = () => {
     const onSubmit = (data: any) => console.log(data);
     return (
         <div>
-            <h1>Sign In</h1>
+            <h1>Sign Up</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+                <input {...register('name',
+                    {
+                        required: "required filed",
+
+                    })}
+                       onFocus={() => {
+                           clearErrors()
+                       }}
+                       className={style.inputStyles}
+                       placeholder={"Name"}/>
+            </div>
+
                 <div>
                     <input {...register('email',
                         {
@@ -30,8 +44,10 @@ export const SignIn = () => {
                            onFocus={() => {
                                clearErrors()
                            }}
+                           className={style.inputStyles}
                            placeholder={"Email"}/>
                 </div>
+
                 {errors.email && <div style={{color: 'red'}}>email is incorrect</div>}
                 <div>
                     <input {...register('password',
@@ -41,12 +57,25 @@ export const SignIn = () => {
                            onFocus={() => {
                                clearErrors()
                            }}
+                           className={style.inputStyles}
                            placeholder={"Password"}/>
+                </div>
+                {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
+                <div>
+                    <input {...register('password',
+                        {
+                            required: "required filed"
+                        })}
+                           onFocus={() => {
+                               clearErrors()
+                           }}
+                           className={style.inputStyles}
+                           placeholder={"Confirm password"}/>
                 </div>
                 {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
 
                 <div>
-                    <button>Login</button>
+                    <button>Sign up</button>
                 </div>
 
             </form>

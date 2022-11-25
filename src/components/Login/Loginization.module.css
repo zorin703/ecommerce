@@ -1,0 +1,62 @@
+.wrapperLogin{
+    padding: 30px;
+    margin: auto auto;
+    width: 410px;
+    /*height: 321px;*/
+    /*left: 595px;*/
+    /*top: 295px;*/
+
+    /* Base / White */
+
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.inputStyles{
+    /*box-sizing: border-box;*/
+
+    /*position: absolute;*/
+    width: 350px;
+    height: 50px;
+    left: 625px;
+    top: 375px;
+    margin-bottom: 16px;
+
+    /* Base / White */
+
+    background: #FFFFFF;
+    /* Grey / Dark / 2 */
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.inputStyles::placeholder{
+    /*width: 100px;*/
+    height: 25px;
+    padding-left: 30px;
+
+    /* Caption / 2 / Regular */
+
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 111% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.3px;
+
+    /* Grey / Dark / 3 */
+
+    color: rgba(0, 0, 0, 0.4);
+/*color: black;*/
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
