@@ -17,20 +17,22 @@ export const SignUp = () => {
     const onSubmit = (data: any) => console.log(data);
     return (
         <div>
-            <div>
-                <h1>Sign Up</h1>
-            </div>
-            <div>
-                <p>
-                    Already have an account?
-                </p>
-            </div>
-            <div>
-                <Link to='../signin'>
+            <div className={style.titleContainer}>
+                <div className={style.title1}>
+                    <p>Sign Up</p>
+                </div>
+                <div className={style.title2}>
                     <p>
-                        Sign in
+                        Already have an account?
                     </p>
-                </Link>
+                </div>
+                <div className={style.title2}>
+                    <Link className={style.link} to='../signin'>
+                        <p>
+                            Sign in
+                        </p>
+                    </Link>
+                </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
@@ -93,10 +95,12 @@ export const SignUp = () => {
                 </div>
 
             </form>
-            <div>
+            <div className={style.signUpTextBottom}>
                 <p>
                     By signing in to your account you agree with our
-                    Privacy Policy and Terms of Use.
+                </p>
+                <p>
+                    <span className={style.signUpTextBottomSpan}> Privacy Policy</span> and <span className={style.signUpTextBottomSpan}>Terms of Use</span>.
                 </p>
             </div>
         </div>

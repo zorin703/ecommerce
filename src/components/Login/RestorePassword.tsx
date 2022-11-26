@@ -17,15 +17,17 @@ export const RestorePassword = () => {
     const onSubmit = (data: any) => console.log(data);
     return (
         <div>
-            <div>
-                <h1>Restore password</h1>
-            </div>
-            <div>
-                <Link to='../signin'>
-                    <p>
-                        Sign in
-                    </p>
-                </Link>
+            <div className={style.titleContainer}>
+                <div className={style.title1}>
+                    <p>Restore password</p>
+                </div>
+                <div className={style.title2}>
+                    <Link className={style.link} to='../signin'>
+                        <p>
+                            Sign in
+                        </p>
+                    </Link>
+                </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>

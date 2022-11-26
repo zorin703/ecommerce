@@ -17,21 +17,23 @@ export const SignIn = () => {
 
     const onSubmit = (data: any) => console.log(data);
     return (
-        <div>
-            <div>
-                <h1>Sign In</h1>
-            </div>
-            <div>
-                <p>
-                    Don’t have an account?
-                </p>
-            </div>
-            <div>
-                <Link to='../signup'>
+        <div >
+            <div className={style.titleContainer}>
+                <div className={style.title1}>
+                    <p>Sign In</p>
+                </div>
+                <div className={style.title2}>
                     <p>
-                        Sign up
+                        Don’t have an account?
                     </p>
-                </Link>
+                </div>
+                <div className={style.title2}>
+                    <Link className={style.link} to='../signup'>
+                        <p>
+                            Sign up
+                        </p>
+                    </Link>
+                </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
@@ -68,7 +70,7 @@ export const SignIn = () => {
                 </div>
             </form>
             <div>
-                <Link to={'../restorepassword'}>
+                <Link className={style.linkBottom} to={'../restorepassword'}>
                     <p>
                         Lost your password?
                     </p>
