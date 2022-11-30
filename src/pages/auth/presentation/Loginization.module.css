@@ -1,10 +1,21 @@
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 750px;
+    left: 0;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.05);
+    opacity: 0.9;
+}
+
 .wrapperLogin {
+    position: absolute;
     padding: 30px;
-    margin: auto auto;
+    /*margin: auto;*/
     width: 410px;
-    /*height: 321px;*/
-    /*left: 595px;*/
-    /*top: 295px;*/
+    height: auto;
+    left: 33%;
+    top: 100px;
 
     /* Base / White */
 
@@ -29,7 +40,7 @@
 
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    /*padding-left: 30px;*/
+    padding-left: 30px;
     font-size: 18px;
 }
 
@@ -175,7 +186,7 @@
 
 }
 
-.signUpTextBottom{
+.signUpTextBottom {
     font-family: 'Inter', serif;
     font-style: normal;
     font-weight: 400;
@@ -194,6 +205,12 @@
 
 }
 
-.signUpTextBottomSpan{
+.signUpTextBottomSpan {
     color: rgba(0, 0, 0, 1);
+}
+
+.formStyle {
+    display: grid;
+    justify-items: center;
+
 }

@@ -16,7 +16,7 @@ export const RestorePassword = () => {
 
     const onSubmit = (data: any) => console.log(data);
     return (
-        <div>
+        <div className={style.wrapperLogin}>
             <div className={style.titleContainer}>
                 <div className={style.title1}>
                     <p>Restore password</p>
@@ -29,7 +29,7 @@ export const RestorePassword = () => {
                     </Link>
                 </div>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input {...register('email',
                         {

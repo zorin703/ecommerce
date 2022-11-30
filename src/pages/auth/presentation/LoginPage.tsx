@@ -7,7 +7,7 @@ import {RestorePassword} from "./RestorePassword";
 import style from "./Loginization.module.css"
 
 export const LoginPage = () => {
-    return <div className={style.wrapperLogin}>
+    return <div className={style.wrapper}>
 
         <Routes>
             <Route path={'signin'} element={<SignIn/>}/>

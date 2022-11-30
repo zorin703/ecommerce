@@ -16,7 +16,7 @@ export const SignUp = () => {
 
     const onSubmit = (data: any) => console.log(data);
     return (
-        <div>
+        <div className={style.wrapperLogin}>
             <div className={style.titleContainer}>
                 <div className={style.title1}>
                     <p>Sign Up</p>
@@ -34,7 +34,7 @@ export const SignUp = () => {
                     </Link>
                 </div>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input {...register('name',
                         {
@@ -73,18 +73,20 @@ export const SignUp = () => {
                            onFocus={() => {
                                clearErrors()
                            }}
+                           type="password"
                            className={style.inputStyles}
                            placeholder={"Password"}/>
                 </div>
                 {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
                 <div>
-                    <input {...register('password',
+                    <input {...register('confirmPassword',
                         {
                             required: "required filed"
                         })}
                            onFocus={() => {
                                clearErrors()
                            }}
+                           type="password"
                            className={style.inputStyles}
                            placeholder={"Confirm password"}/>
                 </div>
