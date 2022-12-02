@@ -23,7 +23,19 @@
     border-radius: 10px;
 }
 
+input{
+    outline: none;
+    border: none;
+    font-size: 18px;
+
+}
+
 .inputStyles {
+    display: grid;
+    grid-template-columns: auto auto;
+
+
+
     /*box-sizing: border-box;*/
 
     /*position: absolute;*/
@@ -213,4 +225,10 @@
     display: grid;
     justify-items: center;
 
+}
+
+.iconInInputPassword{
+display: grid;
+    justify-content: center;
+    align-content: center;
 }

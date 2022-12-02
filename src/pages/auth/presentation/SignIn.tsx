@@ -1,6 +1,10 @@
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
+import InputName from "../components/InputName";
+import InputEmail from "../components/InputEmail";
+import InputPassword from "../components/InputPassword";
+import {ILoginField} from "../login.interface";
 
 export const SignIn = () => {
     const {
@@ -10,12 +14,12 @@ export const SignIn = () => {
         clearErrors,
         formState: {errors},
         reset,
-    } = useForm({
+    } = useForm<ILoginField>({
         mode: 'all',
 
     });
 
-    const onSubmit = (data: any) => console.log(data);
+    const onSubmit: SubmitHandler<ILoginField>= (data) => console.log(data);
     return (
         <div className={style.wrapperLogin}>
             <div className={style.titleContainer}>
@@ -36,36 +40,10 @@ export const SignIn = () => {
                 </div>
             </div>
             <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <input {...register('email',
-                        {
-                            required: "required filed",
-                            pattern: {
-                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message: 'Please enter the valid email'
-                            }
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           className={style.inputStyles}
-                           placeholder={"Email"}/>
-                </div>
-                {errors.email && <div style={{color: 'red'}}>email is incorrect</div>}
-                <div>
-                    <input {...register('password',
-                        {
-                            required: "required filed"
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           type="password"
-                           className={style.inputStyles}
-                           placeholder={"Password"}/>
-                </div>
-                {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
-
+                <InputEmail register={register}/>
+                <InputPassword register={register}
+                               name='password'
+                               placeholder='Password'/>
                 <div>
                     <button className={style.buttonLogin}>Login</button>
                 </div>

@@ -1,18 +1,14 @@
 import {useForm} from "react-hook-form";
 import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
+import InputName from "../components/InputName";
+import InputPassword from "../components/InputPassword";
+import InputEmail from "../components/InputEmail";
+import React from "react";
+
 
 export const SignUp = () => {
-    const {
-        register,
-        handleSubmit,
-        setError,
-        clearErrors,
-        formState: {errors},
-        reset,
-    } = useForm({
-        mode: 'all',
-    });
+    const {register, handleSubmit} = useForm({mode: 'all',});
 
     const onSubmit = (data: any) => console.log(data);
     return (
@@ -35,62 +31,15 @@ export const SignUp = () => {
                 </div>
             </div>
             <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <input {...register('name',
-                        {
-                            required: "required filed",
+                <InputName register={register}/>
+                <InputEmail register={register}/>
 
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           className={style.inputStyles}
-                           placeholder={"Name"}/>
-                </div>
-
-                <div>
-                    <input {...register('email',
-                        {
-                            required: "required filed",
-                            pattern: {
-                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message: 'Please enter the valid email'
-                            }
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           className={style.inputStyles}
-                           placeholder={"Email"}/>
-                </div>
-
-                {errors.email && <div style={{color: 'red'}}>email is incorrect</div>}
-                <div>
-                    <input {...register('password',
-                        {
-                            required: "required filed"
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           type="password"
-                           className={style.inputStyles}
-                           placeholder={"Password"}/>
-                </div>
-                {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
-                <div>
-                    <input {...register('confirmPassword',
-                        {
-                            required: "required filed"
-                        })}
-                           onFocus={() => {
-                               clearErrors()
-                           }}
-                           type="password"
-                           className={style.inputStyles}
-                           placeholder={"Confirm password"}/>
-                </div>
-                {errors.password && <div style={{color: 'red'}}>password is incorrect</div>}
+                <InputPassword register={register}
+                               name='password'
+                               placeholder='Password'/>
+                <InputPassword register={register}
+                               name='confirmPassword'
+                               placeholder='Confirm'/>
 
                 <div>
                     <button className={style.buttonLogin}>Sign up</button>
@@ -102,9 +51,12 @@ export const SignUp = () => {
                     By signing in to your account you agree with our
                 </p>
                 <p>
-                    <span className={style.signUpTextBottomSpan}> Privacy Policy</span> and <span className={style.signUpTextBottomSpan}>Terms of Use</span>.
+                    <span className={style.signUpTextBottomSpan}> Privacy Policy</span>
+                    and <span className={style.signUpTextBottomSpan}>Terms of Use</span>.
                 </p>
             </div>
         </div>
     )
 }
+
+
