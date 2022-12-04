@@ -7,7 +7,6 @@ import {FiEye, FiEyeOff} from "react-icons/fi";
 const InputPassword = ({register, ...props}) => {
     const [show, setShow] = useState(false)
     const {
-
         handleSubmit,
         setError,
         clearErrors,
@@ -16,7 +15,6 @@ const InputPassword = ({register, ...props}) => {
     } = useForm({
         mode: 'all',
     });
-
     // @ts-ignore
     return (<div className={style.inputStyles}>
             <input {...register(props.name,
@@ -26,19 +24,13 @@ const InputPassword = ({register, ...props}) => {
                    onFocus={() => {
                        clearErrors()
                    }}
-                   type={show?"text":"password"}
-
+                   type={show ? "text" : "password"}
                    placeholder={props.placeholder}
-
-
-
             />
-            {/*<span> {icon} </span>*/}
-
             <div className={style.iconInInputPassword} onClick={() => setShow(!show)}>
-                    {show && <FiEye/>}
+                {show && <FiEye/>}
                 {!show && <FiEyeOff/>}
-              </div>
+            </div>
 
 
             {errors?.password && <div style={{color: 'red'}}>password is incorrect</div>}

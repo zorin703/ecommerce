@@ -19,7 +19,7 @@ export const SignIn = () => {
 
     });
 
-    const onSubmit: SubmitHandler<ILoginField>= (data) => console.log(data);
+    const onSubmit: SubmitHandler<ILoginField> = (data) => console.log(data);
     return (
         <div className={style.wrapperLogin}>
             <div className={style.titleContainer}>
@@ -44,9 +44,7 @@ export const SignIn = () => {
                 <InputPassword register={register}
                                name='password'
                                placeholder='Password'/>
-                <div>
-                    <button className={style.buttonLogin}>Login</button>
-                </div>
+                <button className={style.buttonLogin}>Login</button>
             </form>
             <div>
                 <Link className={style.linkBottom} to={'../restorepassword'}>

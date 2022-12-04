@@ -1,4 +1,4 @@
-import {useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
 import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
 import InputName from "../components/InputName";
@@ -8,7 +8,7 @@ import React from "react";
 
 
 export const SignUp = () => {
-    const {register, handleSubmit} = useForm({mode: 'all',});
+    const methods = useForm();
 
     const onSubmit = (data: any) => console.log(data);
     return (
@@ -30,22 +30,24 @@ export const SignUp = () => {
                     </Link>
                 </div>
             </div>
-            <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
-                <InputName register={register}/>
-                <InputEmail register={register}/>
+            <FormProvider {...methods} >
+            <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
+                <InputName />
+                {/*<InputEmail register={register}/>*/}
 
-                <InputPassword register={register}
-                               name='password'
-                               placeholder='Password'/>
-                <InputPassword register={register}
-                               name='confirmPassword'
-                               placeholder='Confirm'/>
+                {/*<InputPassword register={register}*/}
+                {/*               name='password'*/}
+                {/*               placeholder='Password'/>*/}
+                {/*<InputPassword register={register}*/}
+                {/*               name='confirmPassword'*/}
+                {/*               placeholder='Confirm'/>*/}
 
                 <div>
                     <button className={style.buttonLogin}>Sign up</button>
                 </div>
 
             </form>
+            </FormProvider>
             <div className={style.signUpTextBottom}>
                 <p>
                     By signing in to your account you agree with our
