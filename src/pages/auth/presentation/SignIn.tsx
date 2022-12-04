@@ -1,4 +1,4 @@
-import {SubmitHandler, useForm} from "react-hook-form";
+import {FormProvider, SubmitHandler, useForm} from "react-hook-form";
 import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
 import InputName from "../components/InputName";
@@ -7,19 +7,10 @@ import InputPassword from "../components/InputPassword";
 import {ILoginField} from "../login.interface";
 
 export const SignIn = () => {
-    const {
-        register,
-        handleSubmit,
-        setError,
-        clearErrors,
-        formState: {errors},
-        reset,
-    } = useForm<ILoginField>({
-        mode: 'all',
+    const methods = useForm();
 
-    });
-
-    const onSubmit: SubmitHandler<ILoginField> = (data) => console.log(data);
+    const onSubmit = (data: any) => console.log(data);
+    // @ts-ignore
     return (
         <div className={style.wrapperLogin}>
             <div className={style.titleContainer}>
@@ -39,13 +30,14 @@ export const SignIn = () => {
                     </Link>
                 </div>
             </div>
-            <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
-                <InputEmail register={register}/>
-                <InputPassword register={register}
-                               name='password'
-                               placeholder='Password'/>
-                <button className={style.buttonLogin}>Login</button>
-            </form>
+            <FormProvider {...methods} >
+                <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
+                    <InputEmail/>
+                    <InputPassword name='password'
+                                   placeholder='Password'/>
+                    <button className={style.buttonLogin}>Login</button>
+                </form>
+            </FormProvider>
             <div>
                 <Link className={style.linkBottom} to={'../restorepassword'}>
                     <p>

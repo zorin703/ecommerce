@@ -31,22 +31,20 @@ export const SignUp = () => {
                 </div>
             </div>
             <FormProvider {...methods} >
-            <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
-                <InputName />
-                {/*<InputEmail register={register}/>*/}
+                <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
+                    <InputName/>
+                    <InputEmail />
 
-                {/*<InputPassword register={register}*/}
-                {/*               name='password'*/}
-                {/*               placeholder='Password'/>*/}
-                {/*<InputPassword register={register}*/}
-                {/*               name='confirmPassword'*/}
-                {/*               placeholder='Confirm'/>*/}
+                    <InputPassword name='password'
+                                   placeholder='Password'/>
+                    <InputPassword name='confirmPassword'
+                                   placeholder='Confirm'/>
 
-                <div>
-                    <button className={style.buttonLogin}>Sign up</button>
-                </div>
+                    <div>
+                        <button className={style.buttonLogin}>Sign up</button>
+                    </div>
 
-            </form>
+                </form>
             </FormProvider>
             <div className={style.signUpTextBottom}>
                 <p>

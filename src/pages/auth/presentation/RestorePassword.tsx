@@ -1,19 +1,10 @@
-import {useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
 import style from "./Loginization.module.css";
 import {Link} from "react-router-dom";
 import InputEmail from "../components/InputEmail";
 
 export const RestorePassword = () => {
-    const {
-        register,
-        handleSubmit,
-        setError,
-        clearErrors,
-        formState: {errors},
-        reset,
-    } = useForm({
-        mode: 'all',
-    });
+    const methods = useForm();
 
     const onSubmit = (data: any) => console.log(data);
     return (
@@ -30,15 +21,17 @@ export const RestorePassword = () => {
                     </Link>
                 </div>
             </div>
-            <form className={style.formStyle} onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                   <InputEmail register={register}/>
-                </div>
+            <FormProvider {...methods} >
+                <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
+                    <div>
+                        <InputEmail/>
+                    </div>
 
-                <div>
-                    <button className={style.buttonLogin}>Send</button>
-                </div>
-            </form>
+                    <div>
+                        <button className={style.buttonLogin}>Send</button>
+                    </div>
+                </form>
+            </ FormProvider>
         </div>
     )
 }

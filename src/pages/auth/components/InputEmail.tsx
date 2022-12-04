@@ -1,43 +1,32 @@
 import React from 'react';
-import {useForm} from "react-hook-form";
+import {Controller, useFormContext} from "react-hook-form";
 import style from "../presentation/Loginization.module.css";
+import {emailValidation} from "./validations";
 
 // @ts-ignore
-const InputEmail = ({register}) => {
+const InputEmail = () => {
     const {
-        handleSubmit,
-        setError,
-        clearErrors,
-        formState: {errors},
-        reset,
-    } = useForm({
-        mode: 'all',
-    });
+        control,
+        formState: {errors}
+    } = useFormContext();
     // @ts-ignore
-    return (
-        <div className={style.inputStyles}>
-
-            <input {...register('email',
-                {
-                    required: "required filed",
-                    pattern: {
-                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: 'Please enter the valid email'
-                    }
-                })}
-                   onFocus={() => {
-                       clearErrors()
-                   }}
-                // className={style.inputStyles}
-                   placeholder={"Email"}
-
+    return (<>
+            <Controller
+                control={control}
+                name="email"
+                rules={emailValidation}
+                render={({field}) => (
+                    <div className={style.inputStyles}>
+                        <input
+                            onChange={(e) => field.onChange(e)}
+                            value={field.value}
+                            placeholder={"Email"}/>
+                    </div>
+                )}
             />
-
-
-           {errors.email && <div style={{color: 'red'}}>email is incorrect</div>}
-
-        </div>
-    );
+            <> {errors.email?.message}</>
+        </>
+    )
 };
 
 export default InputEmail;

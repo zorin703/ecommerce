@@ -1,41 +1,38 @@
 import React, {useState} from 'react';
 import style from "../presentation/Loginization.module.css";
-import {Field, useForm} from "react-hook-form";
+import {Controller, Field, useForm, useFormContext} from "react-hook-form";
 import {FiEye, FiEyeOff} from "react-icons/fi";
+import {nameValidation, passwordValidation} from "./validations";
 
 // @ts-ignore
-const InputPassword = ({register, ...props}) => {
+const InputPassword = (props) => {
     const [show, setShow] = useState(false)
     const {
-        handleSubmit,
-        setError,
-        clearErrors,
-        formState: {errors},
-        reset,
-    } = useForm({
-        mode: 'all',
-    });
-    // @ts-ignore
-    return (<div className={style.inputStyles}>
-            <input {...register(props.name,
-                {
-                    required: "required filed"
-                })}
-                   onFocus={() => {
-                       clearErrors()
-                   }}
-                   type={show ? "text" : "password"}
-                   placeholder={props.placeholder}
-            />
-            <div className={style.iconInInputPassword} onClick={() => setShow(!show)}>
-                {show && <FiEye/>}
-                {!show && <FiEyeOff/>}
-            </div>
+        control,
+        formState: {errors}
+    } = useFormContext();
 
-
-            {errors?.password && <div style={{color: 'red'}}>password is incorrect</div>}
-        </div>
-    );
-};
+    return (<>
+        <Controller
+            control={control}
+            name={props.name}
+            rules={passwordValidation}
+            render={({field}) => (<div className={style.inputStyles}>
+                    <input
+                        onChange={(e) => field.onChange(e)}
+                        value={field.value}
+                        type={show ? "text" : "password"}
+                        placeholder={props.placeholder}
+                    />
+                    <div className={style.iconInInputPassword} onClick={() => setShow(!show)}>
+                        {show && <FiEye/>}
+                        {!show && <FiEyeOff/>}
+                    </div>
+                </div>
+            )}
+        />
+        <> {errors.password?.message}</>
+    </>);
+}
 
 export default InputPassword;
