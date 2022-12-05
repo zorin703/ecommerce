@@ -1,25 +1,23 @@
 import React from 'react';
 import {Controller, useFormContext} from "react-hook-form";
 import style from "../presentation/Loginization.module.css";
-import {emailValidation} from "./validations";
+import {ILoginField} from "../login.interface";
 
-// @ts-ignore
 const InputEmail = () => {
-    const {
+       const {
         control,
         formState: {errors}
-    } = useFormContext();
-    // @ts-ignore
+    } = useFormContext<ILoginField>();
+
     return (<>
             <Controller
                 control={control}
                 name="email"
-                rules={emailValidation}
-                render={({field}) => (
+                     render={({field}) => (
                     <div className={style.inputStyles}>
                         <input
                             onChange={(e) => field.onChange(e)}
-                            value={field.value}
+                            value={field.value || ''}
                             placeholder={"Email"}/>
                     </div>
                 )}

@@ -1,32 +1,15 @@
-export const nameValidation = {
-    required: "Enter name",
-    validate: (value: string) => {
-        if (value.match(/[А-Яа-я]/)) {
-            return "Enter latin symbols or numbers"
-        }
-        if(value.length < 6) {
-            return "Too small"
-        }
+import * as yup from "yup";
 
-    }
-}
+export const schema = yup.object({
+    name: yup.string().required('Enter your email').optional(),
+    email: yup.string().required('Enter your email').email('This is not email'),
+    password: yup.string().required('Enter your password').optional(),
+    confirmPassword: yup
+        .string()
+        .required('Enter your password')
+        //.oneOf([yup.ref('password')], 'Пароли не совпадают')
+        .optional()
+})
 
-export const passwordValidation = {
-    required: "Enter password",
-    validate: (value: string) => {
-        if(value.length < 6) {
-            return "Too small"
-        }
+//optional() - может не быть поля
 
-    }
-}
-
-export const emailValidation = {
-    required: "Enter email",
-    validate: (value: string) => {
-       if (value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-            return "Please enter the valid email"
-        }
-
-    }
-}

@@ -1,13 +1,13 @@
-import {FormProvider, SubmitHandler, useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
 import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
-import InputName from "../components/InputName";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
-import {ILoginField} from "../login.interface";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {schema} from "../components/validations";
 
 export const SignIn = () => {
-    const methods = useForm();
+    const methods = useForm({resolver: yupResolver(schema)});
 
     const onSubmit = (data: any) => console.log(data);
     // @ts-ignore

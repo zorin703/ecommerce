@@ -5,11 +5,12 @@ import InputName from "../components/InputName";
 import InputPassword from "../components/InputPassword";
 import InputEmail from "../components/InputEmail";
 import React from "react";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {schema} from "../components/validations";
 
 
 export const SignUp = () => {
-    const methods = useForm();
-
+    const methods = useForm({resolver: yupResolver(schema)});
     const onSubmit = (data: any) => console.log(data);
     return (
         <div className={style.wrapperLogin}>
@@ -33,7 +34,7 @@ export const SignUp = () => {
             <FormProvider {...methods} >
                 <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
                     <InputName/>
-                    <InputEmail />
+                    <InputEmail/>
 
                     <InputPassword name='password'
                                    placeholder='Password'/>

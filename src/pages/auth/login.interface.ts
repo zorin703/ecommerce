@@ -3,5 +3,4 @@ export interface ILoginField {
     name?: string
     password?: string
     confirmPassword?: string
-
 }

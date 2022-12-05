@@ -1,10 +1,7 @@
 import React from 'react';
 import style from "../presentation/Loginization.module.css";
-import {Controller, useFormContext, useFormState} from "react-hook-form";
-import {match} from "assert";
-import {nameValidation} from "./validations";
+import {Controller, useFormContext} from "react-hook-form";
 
-// @ts-ignore
 const InputName = () => {
     const {
         control,
@@ -15,17 +12,15 @@ const InputName = () => {
         <Controller
             control={control}
             name="name"
-            rules={nameValidation}
             render={({field}) => (
                 <div className={style.inputStyles}>
                     <input
                         onChange={(e) => field.onChange(e)}
-                        value={field.value}
+                        value={field.value || ''}
                         placeholder={"Name"}/>
                 </div>
             )}
         />
-
         <> {errors.name?.message}</>
     </>);
 };

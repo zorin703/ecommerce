@@ -2,10 +2,11 @@ import {FormProvider, useForm} from "react-hook-form";
 import style from "./Loginization.module.css";
 import {Link} from "react-router-dom";
 import InputEmail from "../components/InputEmail";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {schema} from "../components/validations";
 
 export const RestorePassword = () => {
-    const methods = useForm();
-
+    const methods = useForm({resolver: yupResolver(schema)});
     const onSubmit = (data: any) => console.log(data);
     return (
         <div className={style.wrapperLogin}>
@@ -26,7 +27,6 @@ export const RestorePassword = () => {
                     <div>
                         <InputEmail/>
                     </div>
-
                     <div>
                         <button className={style.buttonLogin}>Send</button>
                     </div>

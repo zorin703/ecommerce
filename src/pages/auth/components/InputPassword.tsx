@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import style from "../presentation/Loginization.module.css";
 import {Controller, Field, useForm, useFormContext} from "react-hook-form";
 import {FiEye, FiEyeOff} from "react-icons/fi";
-import {nameValidation, passwordValidation} from "./validations";
+
 
 // @ts-ignore
 const InputPassword = (props) => {
@@ -16,11 +16,10 @@ const InputPassword = (props) => {
         <Controller
             control={control}
             name={props.name}
-            rules={passwordValidation}
             render={({field}) => (<div className={style.inputStyles}>
                     <input
                         onChange={(e) => field.onChange(e)}
-                        value={field.value}
+                        value={field.value || ''}
                         type={show ? "text" : "password"}
                         placeholder={props.placeholder}
                     />
