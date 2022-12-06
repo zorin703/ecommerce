@@ -3,10 +3,10 @@ import style from "./Loginization.module.css";
 import {Link} from "react-router-dom";
 import InputEmail from "../components/InputEmail";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "../components/validations";
+import {schemaRestorePassword} from "../components/validations";
 
 export const RestorePassword = () => {
-    const methods = useForm({resolver: yupResolver(schema)});
+    const methods = useForm({resolver: yupResolver(schemaRestorePassword)});
     const onSubmit = (data: any) => console.log(data);
     return (
         <div className={style.wrapperLogin}>

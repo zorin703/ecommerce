@@ -12,16 +12,20 @@ const InputPassword = (props) => {
         formState: {errors}
     } = useFormContext();
 
+    // @ts-ignore
     return (<>
         <Controller
             control={control}
-            name={props.name}
+            name="password"
+
             render={({field}) => (<div className={style.inputStyles}>
                     <input
                         onChange={(e) => field.onChange(e)}
                         value={field.value || ''}
                         type={show ? "text" : "password"}
-                        placeholder={props.placeholder}
+                        placeholder="Password"
+                        autoComplete="on"
+
                     />
                     <div className={style.iconInInputPassword} onClick={() => setShow(!show)}>
                         {show && <FiEye/>}

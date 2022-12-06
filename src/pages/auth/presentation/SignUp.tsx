@@ -3,14 +3,15 @@ import style from "./Loginization.module.css"
 import {Link} from "react-router-dom";
 import InputName from "../components/InputName";
 import InputPassword from "../components/InputPassword";
+import InputConfirmPassword from "../components/InputConfirmPassword";
 import InputEmail from "../components/InputEmail";
 import React from "react";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "../components/validations";
+import {schemaSignUp} from "../components/validations";
 
 
 export const SignUp = () => {
-    const methods = useForm({resolver: yupResolver(schema)});
+    const methods = useForm({resolver: yupResolver(schemaSignUp)});
     const onSubmit = (data: any) => console.log(data);
     return (
         <div className={style.wrapperLogin}>
@@ -35,11 +36,8 @@ export const SignUp = () => {
                 <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
                     <InputName/>
                     <InputEmail/>
-
-                    <InputPassword name='password'
-                                   placeholder='Password'/>
-                    <InputPassword name='confirmPassword'
-                                   placeholder='Confirm'/>
+                    <InputPassword />
+                    <InputConfirmPassword />
 
                     <div>
                         <button className={style.buttonLogin}>Sign up</button>

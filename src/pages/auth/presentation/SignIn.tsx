@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 import InputEmail from "../components/InputEmail";
 import InputPassword from "../components/InputPassword";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "../components/validations";
+import {schemaSignIn} from "../components/validations";
 
 export const SignIn = () => {
-    const methods = useForm({resolver: yupResolver(schema)});
+    const methods = useForm({resolver: yupResolver(schemaSignIn)});
 
     const onSubmit = (data: any) => console.log(data);
     // @ts-ignore
@@ -33,8 +33,7 @@ export const SignIn = () => {
             <FormProvider {...methods} >
                 <form className={style.formStyle} onSubmit={methods.handleSubmit(onSubmit)}>
                     <InputEmail/>
-                    <InputPassword name='password'
-                                   placeholder='Password'/>
+                    <InputPassword/>
                     <button className={style.buttonLogin}>Login</button>
                 </form>
             </FormProvider>
