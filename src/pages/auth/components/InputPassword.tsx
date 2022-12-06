@@ -24,8 +24,6 @@ const InputPassword = (props) => {
                         value={field.value || ''}
                         type={show ? "text" : "password"}
                         placeholder="Password"
-                        autoComplete="on"
-
                     />
                     <div className={style.iconInInputPassword} onClick={() => setShow(!show)}>
                         {show && <FiEye/>}
